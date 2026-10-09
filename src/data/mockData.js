@@ -1,4 +1,5 @@
 export const MUNICIPIOS = [
+  { id: 'provincia', nombre: 'Provincia de Jujuy', centro: [-23.6, -65.7], zoom: 8 },
   { id: 'ssj', nombre: 'San Salvador de Jujuy', centro: [-24.1858, -65.2995], zoom: 13 },
   { id: 'alto-comedero', nombre: 'Alto Comedero', centro: [-24.2236, -65.2699], zoom: 14 },
   { id: 'centro', nombre: 'Centro', centro: [-24.1858, -65.2995], zoom: 15 },

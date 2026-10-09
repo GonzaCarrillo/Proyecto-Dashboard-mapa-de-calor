@@ -13,6 +13,7 @@ import {
   Hash,
 } from 'lucide-react'
 import { PUNTOS_CALOR, INCIDENCIAS, ESTADOS, MUNICIPIOS } from '../data/mockData'
+import { mapConfig } from '../config/mapConfig'
 import EstadoBadge from './EstadoBadge'
 import PrioridadBadge from './PrioridadBadge'
 
@@ -88,7 +89,8 @@ export default function HeatMap({ municipio, tipo, focusIncident }) {
               Mapa de Calor Geoespacial de Jujuy
             </h2>
             <p className="text-[11px] text-slate-500">
-              Densidad de reclamos y riesgo urbano por zona · {config.nombre}
+              Densidad de reclamos y riesgo urbano por zona · {config.nombre} ·{' '}
+              <span className="font-semibold text-jujuy-700">{mapConfig.providerLabel}</span>
             </p>
           </div>
         </div>
@@ -117,6 +119,14 @@ export default function HeatMap({ municipio, tipo, focusIncident }) {
           <span className="hidden items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-500 sm:inline-flex">
             <Layers className="h-3.5 w-3.5" /> Capas
           </span>
+          {mapConfig.usandoRespaldo && (
+            <span
+              className="inline-flex items-center gap-1.5 rounded-lg border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-700"
+              title="Definí VITE_MAP_API_KEY para usar el proveedor con API key"
+            >
+              <MapPin className="h-3.5 w-3.5" /> Sin API key · usando respaldo
+            </span>
+          )}
         </div>
       </div>
 
@@ -127,10 +137,7 @@ export default function HeatMap({ municipio, tipo, focusIncident }) {
           scrollWheelZoom
           className="z-0 h-[400px] w-full lg:h-[520px]"
         >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          />
+          <TileLayer attribution={mapConfig.attribution} url={mapConfig.tileUrl} />
           <FlyTo centro={config.centro} zoom={config.zoom} />
           <HeatLayer points={puntosCalor} visible={mostrarCalor} />
 
