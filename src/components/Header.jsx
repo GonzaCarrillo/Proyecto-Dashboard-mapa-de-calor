@@ -38,7 +38,7 @@ export default function Header({ onOpenMenu, municipio, setMunicipio, tipo, setT
 
           <div className="min-w-0 flex-1">
             <h1 className="truncate text-base font-extrabold tracking-tight text-institucional-900 sm:text-lg">
-              Gobierno Abierto de Jujuy
+              Gobierno de Jujuy
               <span className="hidden font-semibold text-slate-400 sm:inline"> · </span>
               <span className="hidden text-jujuy-700 sm:inline">Centro de Mando Digital</span>
             </h1>
